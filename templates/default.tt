@@ -16,6 +16,7 @@
     <link rel="icon" href="/public/img/favicon.ico">
     <title>[% pagename %] - [% site_title %]</title>
     <link href="/public/css/main.min.css" rel="stylesheet">
+    <link rel="canonical" href="/[% pageaddress %]">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
     <script>
             window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -227,9 +228,6 @@
           </div>
         </div>
       </div>
-      <pre>
-        [% USE Dumper ; Dumper.dump( ordered_versions, me, path, pagename, pageaddress, pagedepth, page_index) %]
-      </pre>
     </footer>
     <div class="beta-wrapper beta-bottom-right ">
       <div class="beta beta-blue  ">
