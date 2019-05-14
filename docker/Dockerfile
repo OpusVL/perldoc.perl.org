@@ -28,7 +28,6 @@ RUN cd /opt/perl5/bin && ./cpanm Getopt::Long \
     LWP::UserAgent \
     HTML::TreeBuilder \
     File::Path \
-    Perl::Tidy@20101217 \
     Crypt::Digest::SHA256 \
     Archive::Tar \
     Capture::Tiny \
@@ -36,7 +35,8 @@ RUN cd /opt/perl5/bin && ./cpanm Getopt::Long \
     File::Find \
     Template \
     JSON::MaybeXS \
-    Devel::PatchPerl@1.56
+    Devel::PatchPerl@1.56 \
+    Perl::Tidy@20101217 
 
 COPY dumb-init_* /dumbinit
 
