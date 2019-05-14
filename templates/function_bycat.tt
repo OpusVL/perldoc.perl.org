@@ -1,0 +1,25 @@
+<h1>[% pagename %]</h1>
+<div class="mod_az_list">
+  <a href="/5.[% major %].[% minor %]/index-functions.html">Perl functions A-Z</a> |
+  <a href="/5.[% major %].[% minor %]/index-functions-by-cat.html">Perl functions by category</a> |
+  <a href="/5.[% major %].[% minor %]/perlfunc.html">The 'perlfunc' manpage</a>
+</div>
+
+<ul>
+[% FOREACH cat IN function_cat %]
+  <li><a href="#[% cat.link %]">[% cat.name %]</a></li>
+[% END %]
+</ul>
+
+[% FOREACH cat IN function_cat %]
+  <a id="[% cat.link %]"></a>
+  <h2>[% cat.name %]</h2>
+  <ul>
+    [% FOREACH function IN cat.functions %]
+      <li><a href="functions/[% function.url %]">[% function.name %]</a></li>
+      [% IF function.description %]
+        - [% function.description %]
+      [% END %]
+    [% END %]
+  </ul>
+[% END %]

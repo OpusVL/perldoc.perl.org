@@ -1,0 +1,610 @@
+      [% IF NOT me.major  %]
+          [% SET major = latest.major %]
+          [% SET minor = latest.minor %]
+      [% ELSE %]
+          [% SET major = me.major %]
+          [% SET minor = me.minor %]
+      [% END %]
+
+<!DOCTYPE html>
+<html lang="en">
+	<head lang="en">
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="Error getting the page requested | Documentation - Perl Language"
+		/>
+		<link rel="icon" href="/public/img/favicon.ico" />
+		<title>Error | Documentation - Perl Language</title>
+		<link href="/public/css/main.min.css" rel="stylesheet" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<script>
+			window.ga =
+				window.ga ||
+				function() {
+					(ga.q = ga.q || []).push(arguments);
+				};
+			ga.l = +new Date();
+			ga('create', 'UA-1892152-2', 'auto'); // JJ's account
+			ga('create', 'UA-50555-3', 'auto', 'perlOrg'); // perl.org account
+			ga('require', 'outboundLinkTracker', {
+				events: ['click', 'auxclick', 'contextmenu']
+			});
+			ga('require', 'maxScrollTracker');
+			ga('send', 'pageview');
+			ga('perlOrg.send', 'pageview');
+		</script>
+		<script async src="https://www.google-analytics.com/analytics.js"></script>
+		<script async src="/public/js/tracking.min.js"></script>
+	</head>
+	<body class="body container-fluid ">
+		<div class="wrapper">
+			<nav
+				class="navbar navbar-expand-md navbar-dark bg-primary bg-perl fixed-top justify-content-between"
+			>
+				<a class="navbar-brand" href="/">
+					<object
+						class="logo"
+						data="/public/img/logo_perl_doc.svg"
+						type="image/svg+xml"
+						name="Perl Documentation Logo"
+					>
+						Perl Documentation Logo</object
+					>
+				</a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-toggle="collapse"
+					data-target="#navbar"
+					aria-controls="navbar"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div id="navbar" class="collapse navbar-collapse justify-content-end">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="nav-item dropdown">
+							<a
+								id="navbarDropdown"
+								href="#"
+								class="nav-link dropdown-toggle"
+								data-toggle="dropdown"
+								role="button"
+								aria-haspopup="true"
+								aria-expanded="false"
+								>Perl versions</a
+							>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								[% FOREACH option_version IN ordered_versions.index %]
+								<p class="dropdown-item major-version">
+									5.[% option_version %]
+								</p>
+								[% FOREACH option_minor IN ordered_versions.item(option_version)
+								%]
+								<a
+									class="dropdown-item minor-version"
+									href="/5.[% option_version %].[% option_minor %]"
+									>5.[% option_version %].[% option_minor %]</a
+								>
+								[% END %] [% UNLESS loop.last %]
+								<div class="dropdown-divider"></div>
+								[% END %] [% END %]
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a
+								id="navbarDropdown1"
+								href="#"
+								class="dropdown-toggle nav-link"
+								data-toggle="dropdown"
+								role="button"
+								aria-haspopup="true"
+								aria-expanded="false"
+								>Manuals</a
+							>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-overview.html"
+									>Overview</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-tutorials.html"
+									>Tutorials</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-faq.html"
+									>FAQs</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-history.html"
+									>History / Changes</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-licence.html"
+									>License</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-language.html"
+									>Language</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-functions.html"
+									>Functions</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/perlop.html"
+									>Operators</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/perlvar.html"
+									>Special Variables</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-pragmas.html"
+									>Pragmas</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-utilities.html"
+									>Utilities</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-internals.html"
+									>Internals</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-platforms.html"
+									>Platform Specific</a
+								>
+							</div>
+						</li>
+						<li class="nav-item dropdown">
+							<a
+								id="navbarDropdown3"
+								href="#"
+								class="nav-link dropdown-toggle "
+								data-toggle="dropdown"
+								role="button"
+								aria-haspopup="true"
+								aria-expanded="false"
+								>Modules</a
+							>
+							<div
+								aria-labelledby="navbarDropdown3"
+								class="dropdown-menu letters-wrap"
+							>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-functions.html"
+									>A-Z</a
+								>
+								<a
+									class="dropdown-item"
+									href="/5.[% major %].[% minor %]/index-functions-by-cat.html"
+									>By Category</a
+								>
+								<div class="dropdown-divider"></div>
+								<div class="letter-container">
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-A.html"
+										>A</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-B.html"
+										>B</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-C.html"
+										>C</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-D.html"
+										>D</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-E.html"
+										>E</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-F.html"
+										>F</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-G.html"
+										>G</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-H.html"
+										>H</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-I.html"
+										>I</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-J.html"
+										>J</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-L.html"
+										>L</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-M.html"
+										>M</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-N.html"
+										>N</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-O.html"
+										>O</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-P.html"
+										>P</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-S.html"
+										>S</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-T.html"
+										>T</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-U.html"
+										>U</a
+									>
+									<a
+										class="dropdown-item letters"
+										href="/5.[% major %].[% minor %]/index-modules-X.html"
+										>X</a
+									>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</nav>
+			<div class="row jumbotron pl-5 pr-5">
+				<div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 text-center">
+					<h1 class="h1">Error getting the requested page</h1>
+					<h2 class="h2">Perl 5.[% major %].[% minor %] documentation site</h2>
+					<p>
+						There was an error trying to access the page you requested.
+					</p>
+				</div>
+			</div>
+			<main class="row main-content pb-5 pt-5">
+				<div class="col-sm-8 offset-sm-2">
+					<div class="row">
+						<div class="col-md-6 col-lg-4 pb-5">
+							<a
+								href="/5.[% major %].[% minor %]/index-overview.html"
+								class="highlight-module"
+							>
+								<div class="feature-image-wrap">
+									<h3 class="alternate">Overview</h3>
+									<object
+										data="/public/img/ic_highlight_docs.svg"
+										type="image/svg+xml"
+										class="ic-highlight"
+										name="highlight documentation image"
+										>highlight documentation image</object
+									>
+								</div>
+								<p>
+									An introduction to Perl, links to books, resources and
+									community links - there are many ways to get started with Perl
+									5.
+								</p>
+							</a>
+						</div>
+						<div class="col-md-6  col-lg-4 pb-5">
+							<a
+								href="/5.[% major %].[% minor %]/index-history.html"
+								class="highlight-module"
+							>
+								<div class="feature-image-wrap">
+									<h3 class="alternate">History / Changes</h3>
+									<object
+										data="/public/img/ic_highlight_box.svg"
+										type="image/svg+xml"
+										class="ic-highlight"
+										name="highlight box image"
+										>highlight box image</object
+									>
+								</div>
+								<p>
+									Find out about the history of Perl and release notes
+									(perldelta) for each version.
+								</p>
+							</a>
+						</div>
+						<div class="col-md-6 col-lg-4 pb-5">
+							<a
+								href="/5.[% major %].[% minor %]/index-faq.html"
+								class="highlight-module"
+							>
+								<div class="feature-image-wrap">
+									<h3 class="alternate">FAQs</h3>
+									<object
+										data="/public/img/ic_highlight_tool.svg"
+										type="image/svg+xml"
+										class="ic-highlight"
+										name="highlight tool image"
+										>highlight tool image</object
+									>
+								</div>
+
+								<p>
+									Categorised Frequently Asked Questions answered by the Perl
+									experts.
+								</p>
+							</a>
+						</div>
+						<div class="col-md-6  col-lg-4 pb-5">
+							<a
+								href="/5.[% major %].[% minor %]/index-tutorials.html"
+								class="highlight-module"
+							>
+								<div class="feature-image-wrap">
+									<h3 class="alternate">Tutorials</h3>
+									<object
+										data="/public/img/ic_highlight_docs.svg"
+										type="image/svg+xml"
+										class="ic-highlight"
+										name="highlight docs image"
+										>highlight docs image</object
+									>
+								</div>
+								<p>
+									Tutorials, cheat sheets, recipes and getting started guides.
+								</p>
+							</a>
+						</div>
+						<div class="col-md-6  col-lg-4 pb-5 ">
+							<a
+								href="/5.[% major %].[% minor %]/index-platforms.html"
+								class="highlight-module"
+							>
+								<div class="feature-image-wrap">
+									<h3 class="alternate">Platforms</h3>
+									<object
+										data="/public/img/ic_highlight_contribute.svg"
+										type="image/svg+xml"
+										class="ic-highlight"
+										name="highlight contribute image"
+										>highlight contribute image</object
+									>
+								</div>
+								<p>
+									Perl runs on most platforms - find out where you can use it
+									and what you should expect.
+								</p>
+							</a>
+						</div>
+						<div class="col-md-6  col-lg-4">
+							<a
+								href="/5.[% major %].[% minor %]/index-utilities.html"
+								class="highlight-module"
+							>
+								<div class="feature-image-wrap">
+									<h3 class="alternate">Utilities</h3>
+									<object
+										data="/public/img/ic_highlight_pencil.svg"
+										type="image/svg+xml"
+										class="ic-highlight"
+										name="highlight pencil image"
+										>highlight pencil image</object
+									>
+								</div>
+
+								<p>
+									Standard utilities provided with the core Perl distribution.
+								</p>
+							</a>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<footer class="footer row bg-light pt-5 pb-5">
+			<div class="col-sm-8 offset-sm-2">
+				<div class="row">
+					<div class="col-md-4">
+						<ul class="list-unstyled">
+							<li>
+								<h4>Site info</h4>
+							</li>
+							<li>
+								Docs mantained by
+								<a
+									href="https://lists.perl.org/list/perl5-porters.html"
+									rel="noopener"
+									>Perl 5 Porters</a
+								>
+							</li>
+							<li>
+								Perldoc site development sponsored by
+								<a href="//opusvl.com" rel="noopener"
+									><img
+										class="opus-logo"
+										src="/public/img/opusvl_logo.svg"
+										alt="OpusVL Logo"
+								/></a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-6 col-lg-3">
+								<ul class=" list-unstyled">
+									<li>
+										<h4>Manuals</h4>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-overview.html"
+											>Overview</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-tutorials.html"
+											>Tutorials</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-faq.html">FAQs</a>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-history.html"
+											>Changes</a
+										>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-6 col-lg-3">
+								<ul class=" list-unstyled">
+									<li>
+										<h4>Reference</h4>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-language.html"
+											>Language</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-functions.html"
+											>Functions</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/perlop.html"
+											>Operators</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/perlvar.html"
+											>Variables</a
+										>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-6 col-lg-3">
+								<ul class=" list-unstyled">
+									<li>
+										<h4>Modules</h4>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-modules-A.html"
+											>Modules</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-pragmas.html"
+											>Pragmas</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-utilities.html"
+											>Utilities</a
+										>
+									</li>
+								</ul>
+							</div>
+							<div class="col-md-6 col-lg-3">
+								<ul class=" list-unstyled">
+									<li>
+										<h4>Misc</h4>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-licence.html"
+											>License</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-internals.html"
+											>Internals</a
+										>
+									</li>
+									<li>
+										<a href="/5.[% major %].[% minor %]/index-platforms.html"
+											>Platforms</a
+										>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class=" col-12 footer-inf text-center">
+						<small
+							>perldoc.perl.org - Official documentation for the Perl
+							programming language</small
+						>
+					</div>
+				</div>
+			</div>
+			<pre>
+        [% USE Dumper ; Dumper.dump(path,pagename, pageaddress, pagedepth, page_index) %]
+      </pre>
+		</footer>
+		<div class="beta-wrapper beta-bottom-right ">
+			<div class="beta beta-blue  ">
+				<a
+					class="beta-link "
+					href="https://github.com/OpusVL/perldoc.perl.org/issues/new"
+					rel="noopener"
+				>
+					<span class="beta-text">
+						This is a Beta release.
+					</span>
+					<span class="beta-text">
+						For any issues please raise a ticket on GitHub
+					</span>
+				</a>
+			</div>
+		</div>
+		<script src="/public/js/main.min.js"></script>
+	</body>
+</html>

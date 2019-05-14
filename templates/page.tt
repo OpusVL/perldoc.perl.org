@@ -1,0 +1,9 @@
+<h1>[% pagename %]</h1>
+
+[% FILTER evaltt %]
+  [% pod_html %]
+[% END %]
+
+[% IF page_index %]
+      [% page_index %]
+[% END %]

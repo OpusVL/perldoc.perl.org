@@ -1,0 +1,259 @@
+@import "bootstrap/scss/bootstrap.scss";
+@import "highlight/rainbow.scss";
+@import "same-size-columns.less";
+@letter-spacing-base: 0.13em;
+@font-size-smaller: 10px;
+html {
+  height: 100%;
+}
+
+/* Text Styles */
+
+h1,
+.jumbotron h1 {
+  font-weight: 300;
+  color: @brand-primary;
+}
+
+h2 {
+  font-weight: 700;
+  color: @brand-primary;
+}
+
+h2.alternate {
+  font-weight: 300;
+  color: @gray-darker;
+  font-size: @font-size-h3;
+}
+
+h3 {
+  font-weight: 700;
+  color: @brand-primary;
+  display: inline-block;
+  padding: @padding-small-vertical;
+  border-bottom: 2px solid @brand-success;
+}
+
+h3.alternate {
+  font-weight: 500;
+  color: @brand-primary-darker;
+  display: inline-block;
+  padding: @padding-small-vertical;
+  border-bottom: none;
+}
+
+h4 {
+  font-weight: 700;
+  color: @gray-darker;
+}
+
+/* Navbar */
+
+.navbar-inverse {
+  #gradient .vertical(@brand-primary; @brand-primary-darker; 0%; 100%);
+}
+
+.navbar-brand {
+  padding-top: 0;
+}
+
+.navbar-nav {
+  margin-top: 18px;
+  margin-left: 0;
+}
+
+.navbar-right {
+  margin-right: 0;
+}
+
+.navbar-nav > li {
+  margin-right: 4px;
+}
+
+// .navbar-nav>li>a.btn {
+//   padding: @padding-large-vertical @padding-large-horizontal;
+// }
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  border-color: transparent;
+}
+
+/* Buttons and Dropdowns */
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: @letter-spacing-base;
+  padding: @padding-large-vertical @padding-large-horizontal;
+}
+
+.btn-ic {
+  margin-right: 20px;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.dropdown-toggle {
+  box-shadow: none !important;
+}
+
+.btn .caret {
+  margin-left: 6px;
+}
+
+.dropdown .typeahead {
+  padding: @padding-large-horizontal;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+  margin-top: @navbar-height;
+  #gradient .vertical(@gray-lighter; @gray-light; 0%; 100%);
+  h1 {
+    margin-top: 10px;
+  }
+}
+
+/* Highlight module */
+
+.highlight-module {
+  background: @brand-primary;
+  padding: @padding-large-vertical @padding-large-horizontal;
+  border-radius: @border-radius-large;
+  color: #fff;
+  &:hover {
+    color: #fff;
+    background: fade(@brand-primary, 90%);
+  }
+  p {
+    margin: 20px 0;
+  }
+  .ic-highlight {
+    position: absolute;
+    right: 30px;
+    top: 0;
+  }
+}
+
+/* Internal */
+
+.internal {
+  height: 100%;
+  overflow: hidden;
+  > div,
+  > div > div,
+  > div [class*="col-"] {
+    height: 100%;
+  }
+}
+
+.container-internal {
+  margin-top: @navbar-height;
+}
+
+/* sidebar */
+
+.sidebar {
+  background: @gray-lighter;
+  overflow: scroll;
+  ul + ul {
+    margin-top: 40px;
+  }
+}
+
+.content {
+  padding: 0 20px 100px;
+  overflow: scroll;
+  &-container {
+    max-width: 500px;
+  }
+  h3 {
+    display: block;
+  }
+  .btn-sidebar {
+    margin-top: 20px;
+  }
+  .list-description li + li {
+    margin-top: 10px;
+  }
+}
+
+.pre-highlight {
+  padding: 0;
+  border: 0;
+}
+
+a.highlight,
+span.highlight {
+  background: @gray-lighter;
+  border: 1px solid @gray-light;
+  font-family: @font-family-monospace;
+  border-radius: @border-radius-large;
+  padding: @padding-small-vertical;
+  font-size: @font-size-small;
+}
+
+/* Footer */
+
+.footer {
+  padding: 40px;
+  background-color: @gray-lighter;
+  margin-top: @jumbotron-padding;
+  .links {
+    color: @gray-base;
+    &:hover {
+      color: @brand-primary;
+    }
+  }
+  .footer-info {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: @screen-sm-min) {
+  .navbar {
+    .open .dropdown-menu {
+      background: @brand-primary;
+    }
+    .dropdown-toggle {
+      .caret {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+    }
+  }
+  .navbar-nav > li > a.btn,
+  .navbar-nav > li > a.btn:hover,
+  .navbar-nav > li > a.btn:focus {
+    border-color: transparent !important;
+  }
+  .footer {
+    text-align: center;
+    li {
+      padding: @padding-base-vertical @padding-base-horizontal;
+    }
+  }
+  .highlight-module {
+    margin-bottom: 20px;
+  }
+  .jumbotron .btn {
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .sidebar {
+    position: absolute;
+    left: -200px;
+  }
+  .showSidebar {
+    position: relative;
+    left: 0;
+  }
+  .content-container {
+    max-width: none;
+  }
+}

@@ -1,0 +1,6 @@
+version: "3"
+services:
+  perldoc:
+    image: quay.io/opusvl/perldoc:release
+    volumes:
+      - "/tmp/work:/root/perldoc.perl.org/work"

@@ -1,0 +1,19 @@
+node_modules/
+.sass-cache/*
+*package-lock.json
+config.codekit3
+builds/
+syntax.cache
+PerlCodeDocumentation.code-workspace
+grunts/
+.vscode/
+ssh/
+javascript/
+opensearch.xml
+**.tar.gz
+work/*
+docker/ssh/idrsa
+docker/docker-compose.override.yml
+
+# might need to ignore this
+index.tt
