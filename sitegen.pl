@@ -208,6 +208,16 @@ sub make_index {
             write_html($index_path."/index.html",$output);
         }
 
+        {
+            my $output = "";
+            $global->{tt}->process('templates/404.tt',$ttenv,\$output);
+
+            # Write the output to the output directory
+            my $index_path = join('/',$global->{config}->{'pod-dir'},"5.$major.$minor");
+            make_path($index_path);
+            write_html($index_path."/404.html",$output);
+        }
+
         # Clear ME for the next pass
         $me = {};
     }
