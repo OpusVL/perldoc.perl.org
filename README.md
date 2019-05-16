@@ -1,51 +1,53 @@
-# Perl Documentation Website
+# Perldoc website builder
 
-This repo contains all the scrips that are necessary to develop the documentation website locally and then just deploy with a simple copy/paste to the server.
+The Perldoc website is built from the Perl documentation created buy the developers. This repo contains all the scripts that are necessary to build the static HTML used by the perldoc.perl.org website.
 
-## gen-perldoc.pm
+## Generating Perldoc
 
-A script to download perl versions, compile them and convert base perl pod files into html
+The gen-perldoc.pm script is used to download Perl pod documentation, compile, index, and convert the content into html.
 
-Using the scripts
-
-Running the script bellow will create the `builds` and `outputs` folders that contain each version of Perl released and its documentation.
+Running the script will create the `builds` and `outputs` folders that contain each version of Perl released and its documentation.
 
 ```bash
 perl gen-perldoc.pm
 ```
 
-This script will run once per day so that if a new version is release this is downloaded, compiled and it's documentation released to the site automatically.
+It is scheduled to run run once per day to automatically update the site with changes to the documentation. 
 
-To force recompiling the whole thing (in case of templates being updated) you can run
+To force a recompilation of the whole site (in case the templates have been updated) you can run:
 
 ```bash
 perl gen-perldoc.pm force
 ```
 
-## Developing locally and modifying the templates
+> Using `perl gen-perldoc.pm force` will rewrite the html files so please use it with caution as it will recreate all the html files inside the Outputs folder
 
-### Template modifying
+This may take some time...
 
-There are 2 major files that can modified to change the structural integrity of the static html files.
+## Modifying the site template
 
-`***default.tt***` - template for the actual documentation pages
+There are 2 major files that can modified to change the structure of the generated html files:
+
+`***default.tt***` - template for the documentation content pages
 
 - navigation automatically generated
 - links on the sidebar automatically generated
 - content automatically generated
 - footer automatically generated
 
-`***main_index.tt***` main landing pages for each release
+`***main_index.tt***` main landing pages for releases
 
 - navigation automatically generated
 - landing page content links automatically generated
 - footer automatically generated
 
-Modifying the templates while developing will require rebuilding the actual html files
+Once changed, the whole site will require a rebuild.
 
-Using `perl gen-perldoc.pm force` will rewrite the html files so please use it with caution as it will recreate all the html files inside the Outputs folder
+## Optimising JS assets
 
-### Assets developing
+If you want to optimise the js libraries, there are a few popular options: 
+
+### Grunt
 
 Using Grunt to compile / optimize Sass, JS and Images
 
@@ -66,7 +68,7 @@ There are a few tasks that have been created by default
 grunt watch
 ```
 
-this will watch all the souRce folders and recreate/ recompile files as needed
+this will watch all the source folders and recreate/ recompile files as needed
 
 ```bash
 grunt
@@ -74,9 +76,10 @@ grunt
 
 this command will run all tasks (sass, js, images) and compile the build into the outputs/public folder
 
-local simple http server
 
-```bash
-python -m SimpleHTTPServer 8000
-```
+### Perl JS optimisation tools
+
+[JS minify](https://metacpan.org/pod/JavaScript::Minifier)
+[CSS minify](https://metacpan.org/pod/CSS::Minifier)
+
 
