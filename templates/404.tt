@@ -310,8 +310,7 @@
 			<div class="row jumbotron pl-5 pr-5">
 				<div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 text-center">
 					<h1 class="h1">Error getting the requested page</h1>
-					<h2 class="h2">Perl 5.[% major %].[% minor %] documentation site</h2>
-					<p>
+					<p class='h4'>
 						There was an error trying to access the page you requested.
 					</p>
 				</div>
@@ -585,9 +584,6 @@
 					</div>
 				</div>
 			</div>
-			<pre>
-        [% USE Dumper ; Dumper.dump(path,pagename, pageaddress, pagedepth, page_index) %]
-      </pre>
 		</footer>
 		<div class="beta-wrapper beta-bottom-right ">
 			<div class="beta beta-blue  ">
