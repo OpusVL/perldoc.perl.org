@@ -1,3 +1,21 @@
+# This repository has been moved into a new location!
+
+## The engine (private opusvl repository)
+
+perldoc.perl.org-engine is the repository you need for the new docker/pretty version of this repository
+
+## The output (public internet clonable of the output)
+
+perldoc.perl.org-export is the repository you need for the 'site'
+
+## Reasons for this repository being cleared and split
+
+During the development of this project at times it was neccesary for large binary files and 200k+ sets of smaller files be created,
+beacause of this the '.git' is an enourmous 400MiB and is incredible slow to work with, infact shells that automatically do fancy
+things with git (like zsh) will take seconds to even change directories.
+
+# OLD Readme information 
+
 # Perldoc website builder
 
 The Perldoc website is built from the Perl documentation created buy the developers. This repo contains all the scripts that are necessary to build the static HTML used by the perldoc.perl.org website.

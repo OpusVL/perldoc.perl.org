@@ -1,3 +1,0 @@
-perldocSearch.indexData.pod = new Hash ({
-[% FOREACH page IN pods %]  "[% page.name %]": "[% page.description %]"[% UNLESS loop.last %],[% END %]
-[% END %]});
