@@ -1,8 +1,10 @@
 # This repository has been moved into a new location!
 
-## The engine (private opusvl repository)
+## The engine (public repository*)
 
 perldoc.perl.org-engine is the repository you need for the new docker/pretty version of this repository
+
+* currently private scheduled to be made public
 
 ## The output (public internet clonable of the output)
 
