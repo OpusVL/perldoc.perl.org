@@ -1,6 +1,8 @@
-# This repository has been moved into a new location!
+# This repository is for bug tracking issues only
 
-[here](https://github.com/OpusVL/perldoc.perl.org-engine)
+In the development of this project it became neccesary to split the engine away from the exported static site, so in total there are three repositories, this one being primarily for bug tracking and feature requests.
+
+The other two are simply for source control and are detailed below:
 
 ## The engine (public repository\*)
 
