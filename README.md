@@ -1,27 +1,23 @@
 # This repository is for bug tracking issues only
 
-In the development of this project it became neccesary to split the engine away from the exported static site, so in total there are three repositories, this one being primarily for bug tracking and feature requests.
+While developing [perldoc.perl.org](https://perldoc.perl.org/), it was more convenient to split the engine away from the exported static site.
 
-Which work in conjunction with the engine and export repositories that are detailed below
+These are the three repositories and how they interact:
 
 ## The engine (public repository\*)
 
-perldoc.perl.org-engine is the repository you need for the new docker/pretty version of this repository
+[perldoc.perl.org-engine](https://github.com/OpusVL/perldoc.perl.org-engine) is the repository you need for the new docker/pretty version of this repository.
 
-This repository is for code storage only
+This repository is for code storage only.
 
-<!-- * currently private scheduled to be made public -->
+## The output (public internet cloneable of the output)
 
-the repository is now public [here](https://github.com/OpusVL/perldoc.perl.org-engine)
+[perldoc.perl.org-export](https://github.com/OpusVL/perldoc.perl.org-export) repository is simply the auto-created statically created version of the site and is not interactable (although you can clone it).
 
-## The output (public internet clonable of the output)
+## The website
 
-This repository is simply the auto created statically created version of the site and is not interactable except for cloning
-
-perldoc.perl.org-export is the [full site repository](https://github.com/OpusVL/perldoc.perl.org-export)
+[perldoc.perl.org](https://github.com/OpusVL/perldoc.perl.org) is this repository and is where you should interact with the project to submit issues or pull requests.
 
 ## Reasons for this repository being cleared and split
 
-During the development of this project at times it was neccesary for large binary files and 200k+ sets of smaller files be created,
-beacause of this the '.git' is an enourmous 400MiB and is incredible slow to work with, infact shells that automatically do fancy
-things with git (like zsh) will take seconds to even change directories.
+During the development of this project at times it was neccesary for large binary files and 200k+ sets of smaller files be created. Because of this, the '.git' is an enourmous 400MiB and is incredible slow to work with. In fact, shells that automatically do fancy things with git (like zsh) will take seconds to even change directories.
