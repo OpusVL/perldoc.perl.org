@@ -20,4 +20,4 @@ This repository is for code storage only.
 
 ## Reasons for this repository being cleared and split
 
-During the development of this project at times it was neccesary for large binary files and 200k+ sets of smaller files be created. Because of this, the '.git' is an enourmous 400MiB and is incredible slow to work with. In fact, shells that automatically do fancy things with git (like zsh) will take seconds to even change directories.
+During the development of this project at times it was neccesary for large binary files and 200k+ sets of smaller files be created. Because of this, the '.git' is an enormous 400MiB and is incredible slow to work with. In fact, shells that automatically do fancy things with git (like zsh) will take seconds to even change directories.
