@@ -16,7 +16,7 @@ This repository is for code storage only.
 
 ## The website
 
-[perldoc.perl.org](https://github.com/OpusVL/perldoc.perl.org) is this repository and is where you should interact with the project to submit issues or pull requests.
+[perldoc.perl.org](https://github.com/OpusVL/perldoc.perl.org) is this repository and this is where you should interact with the project to submit issues or pull requests.
 
 ## Reasons for this repository being cleared and split
 
